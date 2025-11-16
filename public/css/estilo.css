@@ -49,7 +49,7 @@ body {
   padding: 0;
 }
 
-.navbar a span{
+.navbar a span {
   background-color: #ffff;
   width: 100px;
   color: #A5C7E5;
@@ -57,7 +57,7 @@ body {
   transition: 0.2s;
 }
 
-.navbar a span:hover{
+.navbar a span:hover {
   color: #F8E37D;
   transform: scale(1.05);
 }
@@ -68,7 +68,7 @@ body {
 }
 
 .navbar li a:hover {
-  color: #F8E37D; 
+  color: #F8E37D;
   transform: scale(1.05);
 }
 
@@ -161,118 +161,3 @@ body {
 .footer .container .version {
   font-size: 12px;
 }
-
-/* LOGIN */
-
-/* .login {
-  height: var(--tamanho-login);
-  background-size: cover;
-} */
-
-/* .login .container {
-  justify-content: right;
-  margin-top: 50px;
-  height: 100%;
-}
-
-.container img{
-  display: flex;
-  width: 250px;
-  margin-left: 90px;
-} */
-
-/* .card {
-  width: 50%;
-  background-color: #f4f3f3;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  color: #F6C68A;
-  flex-direction: column;
-  height: 700px;
-  padding: 20px 0;
-  gap: 10px;
-  width: 600px;
-} */
-
-/* .card h2 {
-  margin: 0;
-  font-size: 30px;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  margin-top: 150px;
-} */
-/* 
-.formulario {
-  display: flex;
-  height: 90%;
-  width: 80%;
-  justify-content: center;
-  flex-direction: column;
-} */
-
-/* .formulario span {
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.formulario input {
-  border: 2px solid #A5C7E5;
-  text-align: center;
-  border-radius: 5px;
-  margin: 0;
-} */
-/* 
-.formulario select {
-  border: 2px solid #A5C7E5;
-  background-color: white;
-  color: gray;
-  height: 36px;
-  text-align: center;
-  border-radius: 5px;
-  margin: 0;
-}
-
-.campo {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding: 5px 0;
-}
-
-.botao {
-  cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
-  background-color: #F6C68A;
-  width: 120px;
-  height: 30px;
-  align-self: center;
-  margin-top: 20px;
-} */
-
-#div_erros_login {
-  display: none
-}
-
-/* input {
-  margin-bottom: 10px;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-} */
-
-
-
-
-
-
-
-
-
-

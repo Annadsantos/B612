@@ -31,13 +31,13 @@
 
         <div class="container-quiz-2">
             <img src="assets/imgs/quiz1.jpeg">
-        
+
             <div class="quiz-textos">
                 <h2>Qual conselho você precisa?</h2>
                 <p>Descubra qual personagem tem a mensagem ideal para você.</p>
-                <button id="btniniciar" onclick="btniniciar()">Iniciar</button>
+                <button id="btniniciar" onclick="btniniciar()">iniciar</button>
             </div>
-        </div>        
+        </div>
 
         <div id="pontuacaoConselhoEJogo">
             <div id="pontuacaoConselho">
@@ -46,7 +46,7 @@
                 <p>Pontos Aviador: <span id="spanAviador">0</span></p>
             </div>
         </div>
-        
+
         <div id="jogo_conselho" class="width-fit-content flex-colunar border-secondary" style="display:none">
             <div id="infoQuestaoConselho" class="padding-8">
                 <span>Questão atual:
@@ -55,47 +55,48 @@
                     <span id="qtdQuestoesConselho"></span> questões.
                 </span>
             </div>
-        
+
             <div id="perguntaConselho" class="padding-8">
                 <span id="spanQuestaoConselho" class="text-bold"></span>
             </div>
-        
+
             <div id="infoAlternativasConselho" class="padding-8">
                 <span><em>Escolha uma opção dentre as abaixo:</em></span>
             </div>
-        
+
             <div id="opcoesConselho" class="flex-colunar padding-8">
-        
+
                 <span>
                     <input type="radio" id="primeiraOpcaoConselho" name="optionConselho" value="alternativaA">
                     <label for="primeiraOpcaoConselho" class="option" id="labelConselhoUm"></label>
                 </span>
-        
+
                 <span>
                     <input type="radio" id="segundaOpcaoConselho" name="optionConselho" value="alternativaB">
                     <label for="segundaOpcaoConselho" class="option" id="labelConselhoDois"></label>
                 </span>
-        
+
                 <span>
                     <input type="radio" id="terceiraOpcaoConselho" name="optionConselho" value="alternativaC">
                     <label for="terceiraOpcaoConselho" class="option" id="labelConselhoTres"></label>
                 </span>
-        
+
                 <span>
                     <input type="radio" id="quartaOpcaoConselho" name="optionConselho" value="alternativaD">
                     <label for="quartaOpcaoConselho" class="option" id="labelConselhoQuatro"></label>
                 </span>
-        
+
             </div>
-        
+
             <div id="botoesConselho" class="flex-colunar padding-8">
                 <button onclick="submeterConselho()" id="btnSubmeterConselho">submeter resposta</button>
-                <button onclick="avancarConselho()" id="btnProxConselho" disabled>avançar para a próxima questão</button>
+                <button onclick="avancarConselho()" id="btnProxConselho" disabled>avançar para a próxima
+                    questão</button>
                 <button onclick="tentarNovamente()" id="btnTentarNovamente">tentar novamente</button>
             </div>
-        
+
         </div>
-        
+
         <div id="resultado_conselho" class="flex-colunar padding-8" style="display:none">
             <h2 id="resultadoConselhoTitulo"></h2>
             <p id="resultadoConselhoTexto"></p>
@@ -106,7 +107,7 @@
             <div class="quiz-textos">
                 <h2>Você se lembra da história?</h2>
                 <p>O quanto você se lembra de o Pequeno Príncipe?</p>
-                <button id="btnIniciarQuiz" onclick="iniciarQuiz()">Iniciar</button>
+                <button id="btnIniciarQuiz" onclick="iniciarQuiz()">iniciar</button>
             </div>
         </div>
 
@@ -122,7 +123,7 @@
         </div>
         </div>
 
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+        <div id="jogo">
             <div id="infoQuestao" class="padding-8">
                 <span>Questão atual:
                     <span id="spanNumeroDaQuestaoAtual"></span>
@@ -462,7 +463,9 @@
 
             desmarcarRadioButtons();
 
-            if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+            numeroDaQuestaoAtual++;
+
+            if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
                 preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
             } else {
                 finalizarJogo();
@@ -494,7 +497,7 @@
                     pontuacaoFinal++;
                     certas++;
                     document.getElementById("spanCertas").innerHTML = certas;
-                    numeroDaQuestaoAtual++;
+
                 } else if (option.checked && option.value !== respostaQuestaoAtual) {
                     const wrongLabelId = option.labels[0].id;
 
@@ -503,7 +506,6 @@
                     tentativaIncorreta++;
                     erradas++;
                     document.getElementById("spanErradas").innerHTML = erradas;
-                    numeroDaQuestaoAtual++;
                 }
             });
         }
@@ -535,6 +537,10 @@
             else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
                 textoParaMensagemFinal = "Pode melhorar na próxima, hein!";
                 classComCoresParaMensagemFinal = "text-warning-with-bg";
+            } 
+            else if (porcentagemFinalDeAcertos >= 0.8) {
+                textoParaMensagemFinal = "Uau, parabéns!";
+                classComCoresParaMensagemFinal = "text-success-with-bg";
             }
             else if (porcentagemFinalDeAcertos >= 0.9) {
                 textoParaMensagemFinal = "Uau, parabéns!";

@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --tamanho-header: 60px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 65px;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.header {
+    height: var(--tamanho-header);
+    background-color: #A5C7E5;
+}
+
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background-color: #A5C7E5;
+}
+
+.header a {
+    text-decoration: none;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: 450;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navbar a span {
+    background-color: #ffff;
+    width: 100px;
+    color: #A5C7E5;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.navbar a span:hover {
+    color: #F8E37D;
+    transform: scale(1.05);
+}
+
+.navbar li a {
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+.navbar li a:hover {
+    color: #F8E37D;
+    transform: scale(1.05);
+}
+
+.titulo {
+    color: #ffff;
+    width: fit-content;
+    font-weight: 700;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.body-container {
+    display: flex;
+    height: auto;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.container-left {
+    width: 100%;
+    height: calc(100vh - var(--tamanho-header));
+}
+
+.imagem-cadastro {
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/imgs/cadastro.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+.right {
+    background-color: #f4f0f0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.container-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cadastro span {
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 30px;
+    text-align: center;
+    color: #A5C7E5;
+}
+
+.card a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #A5C7E5;
+    text-align: center;
+}
+
+.card a span {
+    display: inline-block;
+    transition: 0.2s;
+    color: #F6C68A;
+}
+
+.card a span:hover {
+    transform: scale(1.05);
+}
+
+.card input {
+    width: 100%;
+    max-width: 300px;
+    height: 28px;
+    font-size: 13px;
+    padding: 2px 8px;
+}
+
+.card select {
+    font-size: 13px;
+    padding: 2px 8px;
+    border: 2px solid #A5C7E5;
+    border-radius: 10px;
+    color: #9f9d9d;
+    cursor: pointer;
+    width: 100%;
+    height: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+    color: #A5C7E5;
+}
+
+.formulario span {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.formulario p {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.formulario input {
+    border: 2px solid #A5C7E5;
+    text-align: center;
+    border-radius: 10px;
+    height: 34px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 5px 0;
+}
+
+.botao {
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #A5C7E5;
+    height: 28px;
+}
+
+.botao:hover {
+    color: #F8E37D;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+/* .alerta_erro {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.card_erro {
+    display: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: #ff6464;
+    color: #fff;
+    font-size: 13px;
+} */
