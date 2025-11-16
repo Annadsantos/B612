@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --tamanho-header: 60px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.header {
+  height: var(--tamanho-header);
+  background-color: #A5C7E5;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  background-color: #A5C7E5;
+}
+
+.header a {
+  text-decoration: none;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: 450;
+}
+
+.navbar {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar a span{
+  background-color: #ffff;
+  width: 100px;
+  color: #A5C7E5;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.navbar a span:hover{
+  color: #F8E37D;
+  transform: scale(1.05);
+}
+
+.navbar li a {
+  color: #ffffff;
+  transition: 0.2s;
+}
+
+.navbar li a:hover {
+  color: #F8E37D; 
+  transform: scale(1.05);
+}
+
+.titulo {
+  color: #ffff;
+  width: fit-content;
+  font-weight: 700;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* QUIZ 1 */
+
+.quiz-card {
+    width: 70%;
+    margin: 40px auto;
+    background: #b5d2ed;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .quiz-image {
+    flex: 1;
+  }
+  
+  .container-quiz-2 img {
+    width: 45%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .quiz-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    text-align: left;
+    color: white;
+  }
+  
+  .quiz-content h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+  }
+  
+  .quiz-content p {
+    margin: 0;
+    font-size: 16px;
+    transition: 0.2s;
+  }
+  
+  .quiz-content .btn-iniciar {
+    margin-top: 16px;
+    align-self: flex-start;
+    padding: 10px 28px;
+    background: white;
+    color: #76a7ce;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .quiz-content button:hover {
+    color: #F8E37D; 
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+  
+  #pontuacaoConselhoEJogo {
+    max-width: 700px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-size: 17px;
+  }
+  
+  #pontuacaoConselho {
+    display: none;
+    background: #f8f8f8;
+    padding: 20px 24px;
+    border-radius: 14px;
+  }
+  
+  #pontuacaoConselho p {
+    margin: 4px 0;
+  }
+  
+  #jogo_conselho {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #f8f8f8;
+    padding: 20px 24px;
+    border-radius: 14px;
+    display: none; 
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  #opcoesConselho span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+  }
+  
+  #botoesConselho {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    justify-content: center;
+  }
+  
+  #botoesConselho button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #A5C7E5;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  #botoesConselho button:hover {
+    color: #F8E37D; 
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+  
+  #resultado_conselho {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    background: #f8f8f8;
+    padding: 20px 24px;
+    border-radius: 14px;
+    text-align: left;
+  }
+  
+  /* QUIZ 2*/
+  .container-quiz-2 {
+    width: 70%;
+    margin: 40px auto;
+    background: #b5d2ed;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  
+  .container-quiz-2 img {
+    width: 45%;
+    height: 90%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .quiz-textos {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    color: white;
+    text-align: left;
+  }
+  
+  .quiz-textos h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+  }
+  
+  .quiz-textos p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .quiz-textos button {
+    margin-top: 16px;
+    align-self: flex-start;
+    padding: 10px 28px;
+    background: white;
+    color: #76a7ce;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .quiz-textos button:hover {
+    color: #F8E37D; 
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+
+  #pontuacaoEJogo {
+    max-width: 900px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-size: 17px;
+  }
+  
+  #pontuacao {
+    display: none;
+    background: #f8f8f8;
+    padding: 20px 24px;
+    border-radius: 14px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  #jogo {
+    background: #f8f8f8;
+    padding: 20px 24px;
+    border-radius: 14px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+  }
+  
+  #pontuacao p {
+    margin: 4px 0;
+  }
+  
+  #pontuacao, #jogo {
+    background: #f8f8f8;
+    padding: 20px 24px;
+    border-radius: 14px;
+    display: flex;
+    width: 500px;
+  }
+  
+  #jogo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  #opcoes span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+  }
+  
+  #botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    justify-content: center;
+  }
+  
+  #botoes button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #A5C7E5;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  #botoes button:hover {
+    color: #F8E37D; 
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+
+  .text-success-with-bg {
+    background-color: #d9f9d8;
+    color: #1c7c2c;
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+  
+  .text-danger-with-bg {
+    background-color: #ffd4d4;
+    color: #8c1e1e;
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
