@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>B612</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -25,10 +25,10 @@
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <h1>B612</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Bem-vindo, <span id="b_usuario"></span> ao Asteróide B612</span>!</h3>
             </div>
 
             <div class="btn-nav-white">
@@ -38,18 +38,22 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                <a href="quizzes.html">
+                    <h3>Quizzes</h3>
                 </a>
             </div>
 
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Dashboard</h3>
+                </a>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
+
+        </div>
 
         </div>
 
@@ -98,7 +102,6 @@
 </html>
 
 <script>
-    
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {

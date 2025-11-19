@@ -3,169 +3,134 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B612 Quizzes</title>
+    <title>B612 Dashboard - Quizzes</title>
 
-    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/quiz.css">
 
-    <link rel="stylesheet" href="./css/quiz.css">
-    <link rel="shortcut icon" href="/assets/icon/favicon-pequeno-principe.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
 </head>
 
-<body onload="onloadEsconder()">
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">B612</h1>
-            <ul class="navbar">
-                <li><a href="index.html">home</a></li>
-                <li><a href="personagens.html">personagens</a></li>
-                <li><a href="quizzes.html">quizzes</a></li>
-                <li><a href="login.html"><span>login</span></a></li>
-                <li><a href="cadastro.html"><span>cadastro</span></a></li>
-            </ul>
+<body onload="validarSessao(); onloadEsconder()">
+
+    <div class="janela">
+        <div class="header-left">
+            <h1>B612</h1>
+
+            <div class="hello">
+                <h3>Bem-vindo, <span id="b_usuario"></span> ao Asteróide B612!</h3>
+            </div>
+
+            <div class="btn-nav-white"><a href="cards.html"><h3>Aquários</h3></a></div>
+            <div class="btn-nav-white"><a href="quizzes.html"><h3>Quizzes</h3></a></div>
+            <div class="btn-nav-white"><a href="dashboard.html"><h3>Dashboard</h3></a></div>
+
+            <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
+        </div>
+
+        <div class="dash">
+
+            <div class="container-quiz-2">
+                <img src="../assets/imgs/quiz1.jpeg">
+
+                <div class="quiz-textos">
+                    <h2>Qual conselho você precisa?</h2>
+                    <p>Descubra qual personagem tem a mensagem ideal para você.</p>
+                    <button id="btnIniciarConselho" onclick="btniniciar()">iniciar</button>
+                </div>
+            </div>
+
+            <div id="pontuacaoConselhoEJogo">
+                <div id="pontuacaoConselho">
+                    <p>Pontos Raposa: <span id="spanRaposa">0</span></p>
+                    <p>Pontos Rosa: <span id="spanRosa">0</span></p>
+                    <p>Pontos Aviador: <span id="spanAviador">0</span></p>
+                </div>
+            </div>
+
+            <div id="jogo_conselho" class="width-fit-content flex-colunar border-secondary" style="display:none">
+                <div id="infoQuestaoConselho" class="padding-8">
+                    <span>Questão atual: <span id="spanNumeroConselho"></span> de <span id="qtdQuestoesConselho"></span>.</span>
+                </div>
+
+                <div id="perguntaConselho" class="padding-8">
+                    <span id="spanQuestaoConselho" class="text-bold"></span>
+                </div>
+
+                <div id="infoAlternativasConselho" class="padding-8">
+                    <span><em>Escolha uma opção:</em></span>
+                </div>
+
+                <div id="opcoesConselho" class="flex-colunar padding-8">
+                    <span><input type="radio" id="primeiraOpcaoConselho" name="optionConselho" value="alternativaA"><label id="labelConselhoUm" for="primeiraOpcaoConselho"></label></span>
+                    <span><input type="radio" id="segundaOpcaoConselho" name="optionConselho" value="alternativaB"><label id="labelConselhoDois" for="segundaOpcaoConselho"></label></span>
+                    <span><input type="radio" id="terceiraOpcaoConselho" name="optionConselho" value="alternativaC"><label id="labelConselhoTres" for="terceiraOpcaoConselho"></label></span>
+                    <span><input type="radio" id="quartaOpcaoConselho" name="optionConselho" value="alternativaD"><label id="labelConselhoQuatro" for="quartaOpcaoConselho"></label></span>
+                </div>
+
+                <div id="botoesConselho" class="flex-colunar padding-8">
+                    <button onclick="submeterConselho()" id="btnSubmeterConselho">submeter</button>
+                    <button onclick="avancarConselho()" id="btnProxConselho" disabled>próxima</button>
+                    <button onclick="tentarNovamente()" id="btnTentarNovamente">tentar novamente</button>
+                </div>
+            </div>
+
+            <div id="resultado_conselho" class="flex-colunar padding-8" style="display:none">
+                <h2 id="resultadoConselhoTitulo"></h2>
+                <p id="resultadoConselhoTexto"></p>
+            </div>
+
+            <div class="container-quiz-2">
+                <img src="../assets/imgs/quiz2.jpg">
+
+                <div class="quiz-textos">
+                    <h2>Você se lembra da história?</h2>
+                    <p>O quanto você se lembra de O Pequeno Príncipe?</p>
+                    <button id="btnIniciarQuiz" onclick="iniciarQuiz()">iniciar</button>
+                </div>
+            </div>
+
+            <div id="pontuacaoEJogo">
+                <div id="pontuacao">
+                    <p>Acertos: <span id="spanCertas">0</span></p>
+                    <p>Erros: <span id="spanErradas">0</span></p>
+                    <p>Pontuação: <span id="spanPontuacaoFinal">***</span></p>
+                    <p id="msgFinal" class="msgFinal">***</p>
+                </div>
+            </div>
+
+            <div id="jogo">
+                <div id="infoQuestao" class="padding-8">
+                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span></span>
+                </div>
+
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                    <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+
+                <div id="infoAlternativas" class="padding-8">
+                    <span><em>Escolha uma opção:</em></span>
+                </div>
+
+                <div id="opcoes" class="flex-colunar padding-8">
+                    <span><input type="radio" id="primeiraOpcao" name="option" value="alternativaA"><label id="labelOpcaoUm" for="primeiraOpcao"></label></span>
+                    <span><input type="radio" id="segundaOpcao" name="option" value="alternativaB"><label id="labelOpcaoDois" for="segundaOpcao"></label></span>
+                    <span><input type="radio" id="terceiraOpcao" name="option" value="alternativaC"><label id="labelOpcaoTres" for="terceiraOpcao"></label></span>
+                    <span><input type="radio" id="quartaOpcao" name="option" value="alternativaD"><label id="labelOpcaoQuatro" for="quartaOpcao"></label></span>
+                </div>
+
+                <div id="botoes" class="flex-colunar padding-8">
+                    <button onclick="submeter()" id="btnSubmeter">submeter</button>
+                    <button onclick="avancar()" id="btnProx" disabled>próxima</button>
+                    <button onclick="tentarNovamente()" id="btnTentarNovamente">tentar novamente</button>
+                </div>
+            </div>
+
         </div>
     </div>
-    <main>
 
-        <div class="container-quiz-2">
-            <img src="assets/imgs/quiz1.jpeg">
-
-            <div class="quiz-textos">
-                <h2>Qual conselho você precisa?</h2>
-                <p>Descubra qual personagem tem a mensagem ideal para você.</p>
-                <button id="btniniciar" onclick="if (verificarLoginAntes()) btniniciar()">iniciar</button>
-            </div>
-        </div>
-
-        <div id="pontuacaoConselhoEJogo">
-            <div id="pontuacaoConselho">
-                <p>Pontos Raposa: <span id="spanRaposa">0</span></p>
-                <p>Pontos Rosa: <span id="spanRosa">0</span></p>
-                <p>Pontos Aviador: <span id="spanAviador">0</span></p>
-            </div>
-        </div>
-
-        <div id="jogo_conselho" class="width-fit-content flex-colunar border-secondary" style="display:none">
-            <div id="infoQuestaoConselho" class="padding-8">
-                <span>Questão atual:
-                    <span id="spanNumeroConselho"></span>
-                    de
-                    <span id="qtdQuestoesConselho"></span> questões.
-                </span>
-            </div>
-
-            <div id="perguntaConselho" class="padding-8">
-                <span id="spanQuestaoConselho" class="text-bold"></span>
-            </div>
-
-            <div id="infoAlternativasConselho" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoesConselho" class="flex-colunar padding-8">
-
-                <span>
-                    <input type="radio" id="primeiraOpcaoConselho" name="optionConselho" value="alternativaA">
-                    <label for="primeiraOpcaoConselho" class="option" id="labelConselhoUm"></label>
-                </span>
-
-                <span>
-                    <input type="radio" id="segundaOpcaoConselho" name="optionConselho" value="alternativaB">
-                    <label for="segundaOpcaoConselho" class="option" id="labelConselhoDois"></label>
-                </span>
-
-                <span>
-                    <input type="radio" id="terceiraOpcaoConselho" name="optionConselho" value="alternativaC">
-                    <label for="terceiraOpcaoConselho" class="option" id="labelConselhoTres"></label>
-                </span>
-
-                <span>
-                    <input type="radio" id="quartaOpcaoConselho" name="optionConselho" value="alternativaD">
-                    <label for="quartaOpcaoConselho" class="option" id="labelConselhoQuatro"></label>
-                </span>
-
-            </div>
-
-            <div id="botoesConselho" class="flex-colunar padding-8">
-                <button onclick="submeterConselho()" id="btnSubmeterConselho">submeter resposta</button>
-                <button onclick="avancarConselho()" id="btnProxConselho" disabled>avançar para a próxima
-                    questão</button>
-                <button onclick="tentarNovamente()" id="btnTentarNovamente">tentar novamente</button>
-            </div>
-
-        </div>
-
-        <div id="resultado_conselho" class="flex-colunar padding-8" style="display:none">
-            <h2 id="resultadoConselhoTitulo"></h2>
-            <p id="resultadoConselhoTexto"></p>
-        </div>
-
-        <div class="container-quiz-2">
-            <img src="assets/imgs/quiz2.jpg">
-            <div class="quiz-textos">
-                <h2>Você se lembra da história?</h2>
-                <p>O quanto você se lembra de o Pequeno Príncipe?</p>
-                <button id="btniniciar" onclick="if (verificarLoginAntes()) btniniciar()">iniciar</button>
-            </div>
-        </div>
-
-        <div id="pontuacaoEJogo">
-
-            <div id="pontuacao">
-                <p>Quantidade de acertos: <span id="spanCertas">0</span></p>
-                <p>Quantidade de erros: <span id="spanErradas">0</span></p>
-                <p>Pontuação Final: <span id="spanPontuacaoFinal">***</span></p>
-                <p class="msgFinal" id="msgFinal">***</span></p>
-            </div>
-
-        </div>
-        </div>
-
-        <div id="jogo">
-            <div id="infoQuestao" class="padding-8">
-                <span>Questão atual:
-                    <span id="spanNumeroDaQuestaoAtual"></span>
-                    de
-                    <span id="qtdQuestoes"></span> questões.
-                </span>
-            </div>
-
-            <div id="perguntaDaQuestaoAtual" class="padding-8">
-                <span id="spanQuestaoExibida" class="text-bold"></span>
-            </div>
-
-            <div id="infoAlternativas" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoes" class="flex-colunar padding-8">
-                <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                </span>
-                <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                </span>
-                <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                </span>
-                <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                </span>
-            </div>
-
-            <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>avançar para próxima questão</button>
-                <button onclick="tentarNovamente()" id="btnTentarNovamente">tentar novamente</button>
-            </div>
-        </div>
-        </div>
-    </main>
     <script>
         const listaDeQuestoesConselho = [
             {
@@ -224,23 +189,18 @@
                 resultadoD: "aviador"
             }
         ];
-        let indiceQuestaoConselho = 0;
 
+        let indiceQuestaoConselho = 0;
         let pontosRaposa = 0;
         let pontosRosa = 0;
         let pontosAviador = 0;
-
         const quantidadeQuestoesConselho = listaDeQuestoesConselho.length;
 
         function btniniciar() {
-
             document.getElementById('jogo_conselho').style.display = "flex";
-            document.getElementById('btniniciar').style.display = "flex";
-
+            document.getElementById('btnIniciarConselho').style.display = "none";
             document.getElementById('qtdQuestoesConselho').innerHTML = quantidadeQuestoesConselho;
-
             preencherQuestaoConselho(0);
-
             btnSubmeterConselho.disabled = false;
             btnProxConselho.disabled = true;
         }
@@ -341,6 +301,10 @@
             document.getElementById("resultado_conselho").style.display = "block";
         }
 
+        function tentarNovamenteConselho() {
+            window.location.reload();
+        }
+
         const listaDeQuestoes = [
             {
                 pergunta: "O que o Pequeno Príncipe fazia em seu planeta antes de viajar?",
@@ -381,8 +345,7 @@
                 alternativaC: "O amor",
                 alternativaD: "O invisível aos olhos",
                 alternativaCorreta: "alternativaD"
-            },
-
+            }
         ];
 
         let numeroDaQuestaoAtual = 0;
@@ -559,7 +522,6 @@
             btnTentarNovamente.disabled = false;
 
             document.getElementById('pontuacao').style.display = "block";
-
         }
     </script>
 </body>

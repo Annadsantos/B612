@@ -23,6 +23,7 @@ body {
 .body-container {
   display: flex;
   height: calc(100vh - var(--tamanho-header));
+  
 }
 
 .left,
@@ -37,21 +38,11 @@ body {
 
 .imagem-login {
   width: 100%;
-  height: 108%;
-  background-color: rgba(0, 0, 0, 0.45);  
+  height: 100%;
   background-image: url("../assets/imgs/login.jpeg");
   background-size: cover;
   background-position: center;
 }
-
-.right {
-  background-color: #f4f0f0;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 
 .header {
   height: var(--tamanho-header);
@@ -123,12 +114,17 @@ body {
 
 .right {
   background-color: #f4f0f0;
-  width: 50%;
-  height: 85vh;
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.card {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .card h2 {

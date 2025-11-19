@@ -95,7 +95,7 @@ body {
 }
 
 .div-results .feed-container {
-  background-color: #212124;
+  background-color: #e4e4e4;
   border-radius: 5px;
   margin-bottom: 80px;
 }
@@ -112,7 +112,7 @@ body {
 /* pagina graficos */
 
 .dash-header {
-  background-color: #212124;
+  background-color: #e4e4e4;
 }
 
 .dash {
@@ -120,7 +120,7 @@ body {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #161618;
+  background-color: #e4e4e4;
   height: 100vh;
   overflow: auto;
 }
@@ -132,7 +132,7 @@ body {
   width: 70%;
   margin: auto;
   margin-top: 10px;
-  background-color: #212124;
+  background-color: #e4e4e4;
 }
 
 .area-parametros-alerta .titulo-legenda {

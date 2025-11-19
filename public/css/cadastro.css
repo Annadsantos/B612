@@ -84,7 +84,7 @@ body {
 
 .body-container {
     display: flex;
-    height: auto;
+    align-items: left;
 }
 
 .left,
@@ -92,9 +92,13 @@ body {
     flex: 1;
 }
 
+.left {
+    display: flex;
+}
+
 .container-left {
     width: 100%;
-    height: calc(100vh - var(--tamanho-header));
+    height: 100%;
 }
 
 .imagem-cadastro {
@@ -124,6 +128,7 @@ body {
 }
 
 .card h2 {
+    margin: 0 0 20px 0;
     font-size: 30px;
     text-align: center;
     color: #A5C7E5;

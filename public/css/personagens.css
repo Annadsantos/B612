@@ -82,87 +82,42 @@ body {
   margin: 0;
 }
 
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url('../assets/imgs/banner_home.jpeg');
-  background-size: cover;
-  background-position: center;
-}
-
-.banner .container {
+.conteudo {
   display: flex;
-  justify-content: center;
+  width: 80%;
+  margin: 40px auto;
+  background: #b5d2ed;
+  border-radius: 24px;
+  display: flex;
   align-items: center;
-  height: 100%;
 }
 
-.banner .container p {
+.conteudo img {
+  width: 40%;
+  border-radius: 24px 0 0 24px;
+}
+
+.personagens-texto {
   width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  color: white;
   text-align: left;
 }
 
-.banner .container span {
-  font-weight: 800;
+.personagens-texto h3 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
 }
 
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  background-color: #f4f0f0;
-  height: 900px;
+.personagens-texto p {
+  margin: 0;
+  font-size: 16px;
 }
 
-.social .container {
-  justify-content: center;
-}
 
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* FOOTER */
-
-.footer {
-  background-color: #A5C7E5;
-  height: 77px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer :hover {
-  color: #F8E37D;
-  transform: scale(1.05);
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
+/* VOTAÇÃO */

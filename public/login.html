@@ -24,7 +24,6 @@
                 <li><a href="index.html">home</a></li>
                 <li><a href="personagens.html">personagens</a>
                 <li><a href="quizzes.html">quizzes</a>
-                <li><a href="2048.html">2048</a></li>
                 <li><a href="login.html"><span>login</span></a>
                 <li><a href="cadastro.html"><span>cadastro</span></a>
                 </li>
@@ -117,14 +116,15 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+
+                    // usando os MESMOS nomes que o backend envia:
+                    sessionStorage.EMAIL_USUARIO = json.emailUsuario;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
-
                 });
 
             } else {

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>B612 Dashboard</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -18,40 +18,35 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-
-<!-- <body onload=" atualizarFeed()"> -->
 
 <body>
 
     <div class="janela">
         <div class="header-left">
-            <h1>AquaTech</h1>
+            <h1>B612</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Bem-vindo, <span id="b_usuario"></span> ao Asteróide B612</span>!</h3>
             </div>
 
             <div class="btn-nav-white">
-                <a href="./cards.html">
+                <a href="cards.html">
                     <h3>Aquários</h3>
                 </a>
             </div>
 
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
+            <div class="btn-nav-white">
+                <a href="quizzes.html">
+                    <h3>Quizzes</h3>
+                </a>
             </div>
 
             <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                <a href="./dashboard.html">
+                    <h3>Dashboard</h3>
                 </a>
             </div>
 
@@ -66,7 +61,7 @@
             </div>
 
             <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+
             </div>
             <div id="graficos">
             </div>
@@ -77,7 +72,6 @@
 </body>
 
 </html>
-
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 

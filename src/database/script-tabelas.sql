@@ -19,14 +19,6 @@ resposta VARCHAR(45) NOT NULL
 );
 
 
-CREATE TABLE jogo2048 (
-idJogo INT PRIMARY KEY AUTO_INCREMENT,
-pontuacao INT,
-dtJogo DATE DEFAULT (CURRENT_DATE),
-fkUsuario INT,
-	CONSTRAINT fkUsuarioJogo2048
-		FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
-);
 
 CREATE TABLE personagem (
 idPersonagem INT PRIMARY KEY AUTO_INCREMENT,
