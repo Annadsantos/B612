@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../css/quiz.css">
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
 </head>
 
 <body onload="validarSessao(); onloadEsconder()">
@@ -23,11 +22,19 @@
                 <h3>Bem-vindo, <span id="b_usuario"></span> ao Asteróide B612!</h3>
             </div>
 
-            <div class="btn-nav-white"><a href="cards.html"><h3>Aquários</h3></a></div>
-            <div class="btn-nav-white"><a href="quizzes.html"><h3>Quizzes</h3></a></div>
-            <div class="btn-nav-white"><a href="dashboard.html"><h3>Dashboard</h3></a></div>
+            <div class="btn-nav-white"><a href="cards.html">
+                    <h3>Aquários</h3>
+                </a></div>
+            <div class="btn-nav-white"><a href="quizzes.html">
+                    <h3>Quizzes</h3>
+                </a></div>
+            <div class="btn-nav-white"><a href="dashboard.html">
+                    <h3>Dashboard</h3>
+                </a></div>
 
-            <div class="btn-logout" onclick="limparSessao()"><h3>Sair</h3></div>
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
         </div>
 
         <div class="dash">
@@ -52,7 +59,8 @@
 
             <div id="jogo_conselho" class="width-fit-content flex-colunar border-secondary" style="display:none">
                 <div id="infoQuestaoConselho" class="padding-8">
-                    <span>Questão atual: <span id="spanNumeroConselho"></span> de <span id="qtdQuestoesConselho"></span>.</span>
+                    <span>Questão atual: <span id="spanNumeroConselho"></span> de <span
+                            id="qtdQuestoesConselho"></span>.</span>
                 </div>
 
                 <div id="perguntaConselho" class="padding-8">
@@ -64,10 +72,16 @@
                 </div>
 
                 <div id="opcoesConselho" class="flex-colunar padding-8">
-                    <span><input type="radio" id="primeiraOpcaoConselho" name="optionConselho" value="alternativaA"><label id="labelConselhoUm" for="primeiraOpcaoConselho"></label></span>
-                    <span><input type="radio" id="segundaOpcaoConselho" name="optionConselho" value="alternativaB"><label id="labelConselhoDois" for="segundaOpcaoConselho"></label></span>
-                    <span><input type="radio" id="terceiraOpcaoConselho" name="optionConselho" value="alternativaC"><label id="labelConselhoTres" for="terceiraOpcaoConselho"></label></span>
-                    <span><input type="radio" id="quartaOpcaoConselho" name="optionConselho" value="alternativaD"><label id="labelConselhoQuatro" for="quartaOpcaoConselho"></label></span>
+                    <span><input type="radio" id="primeiraOpcaoConselho" name="optionConselho"
+                            value="alternativaA"><label id="labelConselhoUm" for="primeiraOpcaoConselho"></label></span>
+                    <span><input type="radio" id="segundaOpcaoConselho" name="optionConselho"
+                            value="alternativaB"><label id="labelConselhoDois"
+                            for="segundaOpcaoConselho"></label></span>
+                    <span><input type="radio" id="terceiraOpcaoConselho" name="optionConselho"
+                            value="alternativaC"><label id="labelConselhoTres"
+                            for="terceiraOpcaoConselho"></label></span>
+                    <span><input type="radio" id="quartaOpcaoConselho" name="optionConselho" value="alternativaD"><label
+                            id="labelConselhoQuatro" for="quartaOpcaoConselho"></label></span>
                 </div>
 
                 <div id="botoesConselho" class="flex-colunar padding-8">
@@ -103,7 +117,8 @@
 
             <div id="jogo">
                 <div id="infoQuestao" class="padding-8">
-                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span></span>
+                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span
+                            id="qtdQuestoes"></span></span>
                 </div>
 
                 <div id="perguntaDaQuestaoAtual" class="padding-8">
@@ -115,10 +130,14 @@
                 </div>
 
                 <div id="opcoes" class="flex-colunar padding-8">
-                    <span><input type="radio" id="primeiraOpcao" name="option" value="alternativaA"><label id="labelOpcaoUm" for="primeiraOpcao"></label></span>
-                    <span><input type="radio" id="segundaOpcao" name="option" value="alternativaB"><label id="labelOpcaoDois" for="segundaOpcao"></label></span>
-                    <span><input type="radio" id="terceiraOpcao" name="option" value="alternativaC"><label id="labelOpcaoTres" for="terceiraOpcao"></label></span>
-                    <span><input type="radio" id="quartaOpcao" name="option" value="alternativaD"><label id="labelOpcaoQuatro" for="quartaOpcao"></label></span>
+                    <span><input type="radio" id="primeiraOpcao" name="option" value="alternativaA"><label
+                            id="labelOpcaoUm" for="primeiraOpcao"></label></span>
+                    <span><input type="radio" id="segundaOpcao" name="option" value="alternativaB"><label
+                            id="labelOpcaoDois" for="segundaOpcao"></label></span>
+                    <span><input type="radio" id="terceiraOpcao" name="option" value="alternativaC"><label
+                            id="labelOpcaoTres" for="terceiraOpcao"></label></span>
+                    <span><input type="radio" id="quartaOpcao" name="option" value="alternativaD"><label
+                            id="labelOpcaoQuatro" for="quartaOpcao"></label></span>
                 </div>
 
                 <div id="botoes" class="flex-colunar padding-8">
@@ -280,26 +299,67 @@
         }
 
         function finalizarQuizConselho() {
-            let conselhoFinal = "";
-            let mensagem = "";
+    let conselhoFinal = "";
+    let mensagem = "";
 
-            if (pontosRaposa >= pontosRosa && pontosRaposa >= pontosAviador) {
-                conselhoFinal = "Conselho da Raposa";
-                mensagem = "“Você se torna eternamente responsável por aquilo que cativa.”<br>Talvez você precise olhar com carinho para os laços que está criando e cultivando.";
-            } else if (pontosRosa >= pontosRaposa && pontosRosa >= pontosAviador) {
-                conselhoFinal = "Conselho da Rosa";
-                mensagem = "“É preciso exigir de cada um o que cada um pode dar.”<br>Talvez seja hora de cuidar de si e colocar limites gentis ao seu redor.";
-            } else {
-                conselhoFinal = "Conselho do Aviador";
-                mensagem = "“Só se vê bem com o coração. O essencial é invisível aos olhos.”<br>Talvez você precise confiar mais nos seus sonhos e na sua imaginação.";
+    if (pontosRaposa >= pontosRosa && pontosRaposa >= pontosAviador) {
+        conselhoFinal = "Conselho da Raposa";
+        mensagem = "“Você se torna eternamente responsável por aquilo que cativa.”<br>Talvez você precise olhar com carinho para os laços que está criando e cultivando.";
+    } else if (pontosRosa >= pontosRaposa && pontosRosa >= pontosAviador) {
+        conselhoFinal = "Conselho da Rosa";
+        mensagem = "“É preciso exigir de cada um o que cada um pode dar.”<br>Talvez seja hora de cuidar de si e colocar limites gentis ao seu redor.";
+    } else {
+        conselhoFinal = "Conselho do Aviador";
+        mensagem = "“Só se vê bem com o coração. O essencial é invisível aos olhos.”<br>Talvez você precise confiar mais nos seus sonhos e na sua imaginação.";
+    }
+
+    document.getElementById("resultadoConselhoTitulo").innerHTML = conselhoFinal;
+    document.getElementById("resultadoConselhoTexto").innerHTML = mensagem;
+
+    document.getElementById("jogo_conselho").style.display = "none";
+    document.getElementById("resultado_conselho").style.display = "block";
+
+    salvarResultadoConselho(conselhoFinal);
+}
+
+        function salvarResultadoConselho(conselhoFinal) {
+            console.log("Vou salvar no banco:", conselhoFinal);
+
+            var fkQuiz = 1;
+            var fkUsuario = sessionStorage.ID_USUARIO;
+
+            if (!fkUsuario) {
+                console.error("ID_USUARIO não encontrado na sessionStorage");
+                return;
             }
 
-            document.getElementById("resultadoConselhoTitulo").innerHTML = conselhoFinal;
-            document.getElementById("resultadoConselhoTexto").innerHTML = mensagem;
-
-            document.getElementById("jogo_conselho").style.display = "none";
-            document.getElementById("resultado_conselho").style.display = "block";
+            fetch("/quizzes/salvarResultado", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fkQuiz: fkQuiz,
+                    fkUsuario: fkUsuario,
+                    conselho: conselhoFinal
+                })
+            })
+                .then(function (resposta) {
+                    console.log("Status da resposta:", resposta.status);
+                    if (resposta.ok) {
+                        return resposta.json();
+                    } else {
+                        throw "Erro ao salvar resultado. Status: " + resposta.status;
+                    }
+                })
+                .then(function (dados) {
+                    console.log("Dados retornados:", dados);
+                })
+                .catch(function (erro) {
+                    console.error("Erro no fetch:", erro);
+                });
         }
+
 
         function tentarNovamenteConselho() {
             window.location.reload();
