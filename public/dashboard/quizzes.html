@@ -299,31 +299,35 @@
         }
 
         function finalizarQuizConselho() {
-    let conselhoFinal = "";
-    let mensagem = "";
+            let conselhoFinal = "";
+            let mensagem = "";
+            let idPersonagem = null;
 
-    if (pontosRaposa >= pontosRosa && pontosRaposa >= pontosAviador) {
-        conselhoFinal = "Conselho da Raposa";
-        mensagem = "“Você se torna eternamente responsável por aquilo que cativa.”<br>Talvez você precise olhar com carinho para os laços que está criando e cultivando.";
-    } else if (pontosRosa >= pontosRaposa && pontosRosa >= pontosAviador) {
-        conselhoFinal = "Conselho da Rosa";
-        mensagem = "“É preciso exigir de cada um o que cada um pode dar.”<br>Talvez seja hora de cuidar de si e colocar limites gentis ao seu redor.";
-    } else {
-        conselhoFinal = "Conselho do Aviador";
-        mensagem = "“Só se vê bem com o coração. O essencial é invisível aos olhos.”<br>Talvez você precise confiar mais nos seus sonhos e na sua imaginação.";
-    }
+            if (pontosRaposa >= pontosRosa && pontosRaposa >= pontosAviador) {
+                conselhoFinal = "Conselho da Raposa";
+                mensagem = "“Você se torna eternamente responsável por aquilo que cativa.”<br>Talvez você precise olhar com carinho para os laços que está criando e cultivando.";
+                idPersonagem = 1;
+            } else if (pontosRosa >= pontosRaposa && pontosRosa >= pontosAviador) {
+                conselhoFinal = "Conselho da Rosa";
+                mensagem = "“É preciso exigir de cada um o que cada um pode dar.”<br>Talvez seja hora de cuidar de si e colocar limites gentis ao seu redor.";
+                idPersonagem = 2;
+            } else {
+                conselhoFinal = "Conselho do Aviador";
+                mensagem = "“Só se vê bem com o coração. O essencial é invisível aos olhos.”<br>Talvez você precise confiar mais nos seus sonhos e na sua imaginação.";
+                idPersonagem = 3;
+            }
 
-    document.getElementById("resultadoConselhoTitulo").innerHTML = conselhoFinal;
-    document.getElementById("resultadoConselhoTexto").innerHTML = mensagem;
+            document.getElementById("resultadoConselhoTitulo").innerHTML = conselhoFinal;
+            document.getElementById("resultadoConselhoTexto").innerHTML = mensagem;
 
-    document.getElementById("jogo_conselho").style.display = "none";
-    document.getElementById("resultado_conselho").style.display = "block";
+            document.getElementById("jogo_conselho").style.display = "none";
+            document.getElementById("resultado_conselho").style.display = "block";
 
-    salvarResultadoConselho(conselhoFinal);
-}
+            salvarResultadoConselho(conselhoFinal, idPersonagem);
+        }
 
-        function salvarResultadoConselho(conselhoFinal) {
-            console.log("Vou salvar no banco:", conselhoFinal);
+        function salvarResultadoConselho(conselhoFinal, idPersonagem) {
+            console.log("Vou salvar no banco:", conselhoFinal, "personagem:", idPersonagem);
 
             var fkQuiz = 1;
             var fkUsuario = sessionStorage.ID_USUARIO;
@@ -341,7 +345,8 @@
                 body: JSON.stringify({
                     fkQuiz: fkQuiz,
                     fkUsuario: fkUsuario,
-                    conselho: conselhoFinal
+                    conselho: conselhoFinal,
+                    fkPersonagem: idPersonagem
                 })
             })
                 .then(function (resposta) {
@@ -552,6 +557,8 @@
             let classComCoresParaMensagemFinal = null;
             const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes;
 
+            const percentual = Math.round(porcentagemFinalDeAcertos * 100);
+
             if (porcentagemFinalDeAcertos <= 0.3) {
                 textoParaMensagemFinal = "Parece que você não estudou...";
                 classComCoresParaMensagemFinal = "text-danger-with-bg";
@@ -569,7 +576,7 @@
                 classComCoresParaMensagemFinal = "text-success-with-bg";
             }
 
-            textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões.";
+            textoParaMensagemFinal += `<br> Você acertou ${percentual}% das questões.`;
 
             document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal;
             document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal);
@@ -582,6 +589,49 @@
             btnTentarNovamente.disabled = false;
 
             document.getElementById('pontuacao').style.display = "block";
+
+            salvarResultadoQuiz2(pontuacaoFinal, percentual);
+        }
+
+        function salvarResultadoQuiz2(pontuacaoFinal, percentual) {
+            console.log("Salvando resultado do Quiz 2 no banco...");
+
+            var fkQuiz = 2;
+            var fkUsuario = sessionStorage.ID_USUARIO;
+
+            if (!fkUsuario) {
+                console.error("ID_USUARIO não encontrado na sessionStorage");
+                return;
+            }
+
+            var textoResultado = `Quiz memória: ${pontuacaoFinal} acertos (${percentual}%)`;
+
+            // TROCAR AQUI 👇
+            fetch("/quizzes/salvarResultado", {   // <-- plural, igual ao app.use("/quizzes", ...)
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fkQuiz: fkQuiz,
+                    fkUsuario: fkUsuario,
+                    conselho: textoResultado
+                })
+            })
+                .then(function (resposta) {
+                    console.log("Status da resposta (quiz 2):", resposta.status);
+                    if (resposta.ok) {
+                        return resposta.json();
+                    } else {
+                        throw "Erro ao salvar resultado do quiz 2. Status: " + resposta.status;
+                    }
+                })
+                .then(function (dados) {
+                    console.log("Dados retornados (quiz 2):", dados);
+                })
+                .catch(function (erro) {
+                    console.error("Erro no fetch do quiz 2:", erro);
+                });
         }
     </script>
 </body>

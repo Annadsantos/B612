@@ -106,7 +106,7 @@
             <div class="quiz-textos">
                 <h2>Você se lembra da história?</h2>
                 <p>O quanto você se lembra de o Pequeno Príncipe?</p>
-                <button id="btniniciar" onclick="if (verificarLoginAntes()) btniniciar()">iniciar</button>
+                <button id="btnIniciarQuiz" onclick="if (verificarLoginAntes()) iniciarQuiz()">iniciar</button>
             </div>
         </div>
 
@@ -546,7 +546,9 @@
                 classComCoresParaMensagemFinal = "text-success-with-bg";
             }
 
-            textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões.";
+            const percentual = Math.round(porcentagemFinalDeAcertos * 100);
+
+            textoParaMensagemFinal += "<br> Você acertou " + percentual + "% das questões.";
 
             document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal;
             document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal);
@@ -560,7 +562,10 @@
 
             document.getElementById('pontuacao').style.display = "block";
 
+            salvarResultadoQuiz2(pontuacaoFinal, percentual);
         }
+
+        
     </script>
 </body>
 
