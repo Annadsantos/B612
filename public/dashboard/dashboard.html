@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo de como Plotar Gráficos</title>
-    <!-- Incluindo a biblioteca Chart.js para desenhar gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="obterDados()"> <!-- Chamando a função obterDados ao carregar a página -->
+<body onload="obterDados()">
 
     <!-- Título para o gráfico de linhas -->
     Gráfico de linhas
@@ -61,7 +60,7 @@ function plotarGraficoBarraMedia(dados) {
     var jogadores = [];
 
     for (var i = 0; i < dados.length; i++) {
-        votos.push(dados[i].qtd);      // ajusta conforme o SELECT
+        votos.push(dados[i].qtd);
         jogadores.push("Quiz " + dados[i].fkQuiz);
     }
 
@@ -87,7 +86,7 @@ function plotarGraficoBarraAviador(dados) {
     var jogadores = [];
 
     for (var i = 0; i < dados.length; i++) {
-        votos.push(dados[i].qtd);      // exemplo
+        votos.push(dados[i].qtd);
         jogadores.push("Quiz " + dados[i].fkQuiz);
     }
 
