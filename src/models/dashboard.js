@@ -18,12 +18,9 @@ function resultadoConselho() {
 
 function media() {
     var instrucao = `
-    SELECT q.nome AS quiz,
-    COUNT(*) AS qtd
-        FROM resultadoQuiz rq
-            JOIN quiz q ON rq.fkQuiz = q.idQuiz
-                GROUP BY rq.fkQuiz;
-
+SELECT conselho, COUNT(*) AS qtd
+FROM resultadoQuiz
+GROUP BY conselho;
     `;
 
     console.log("Executando sql media: \n" + instrucao);
@@ -32,9 +29,9 @@ function media() {
 
 function respostaAviador() {
     var instrucao = `
-        SELECT fkQuiz, COUNT(*) AS qtd
-        FROM resultadoQuiz
-        GROUP BY fkQuiz; 
+SELECT conselho, COUNT(*) AS qtd
+FROM resultadoQuiz
+GROUP BY conselho;
     `;
 
     console.log("Executando sql respostaAviador: \n" + instrucao);

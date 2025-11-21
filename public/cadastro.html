@@ -14,8 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body onload="listar()">
-
+<!-- <body onload="listar()"> -->
   <div class="header">
     <div class="container">
       <h1 class="titulo">B612</h1>
@@ -97,25 +96,18 @@
 </html>
 <script>
   function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var respostaVar = resposta_select.value;
 
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
@@ -147,7 +139,6 @@
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
       });
-
     return false;
   }
 

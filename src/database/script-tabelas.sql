@@ -47,14 +47,14 @@ INSERT INTO quiz (nome) VALUES
 	('Você se lembra da história?');
 
 CREATE TABLE resultadoQuiz (
-fkQuiz INT NOT NULL,
-fkUsuario INT NOT NULL,
-fkPersonagem INT NULL,
-conselho VARCHAR(255),
-PRIMARY KEY (fkQuiz, fkUsuario),
-FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz),
-FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-FOREIGN KEY (fkPersonagem) REFERENCES personagem(idPersonagem)
+    idResultado INT PRIMARY KEY AUTO_INCREMENT,
+    fkQuiz INT NOT NULL,
+    fkUsuario INT NOT NULL,
+    fkPersonagem INT NULL,
+    conselho VARCHAR(255),
+    FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz),
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (fkPersonagem) REFERENCES personagem(idPersonagem)
 );
 
 CREATE TABLE pergunta (

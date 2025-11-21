@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo de como Plotar Gráficos</title>
+    <!-- Incluindo a biblioteca Chart.js para desenhar gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="obterDados()">
+<body onload="obterDados()"> <!-- Chamando a função obterDados ao carregar a página -->
+
+    <!-- Título para o gráfico de linhas -->
     Gráfico de linhas
     <div>
+        <!-- Elemento canvas onde o gráfico de linha será desenhado -->
         <canvas id="linha"></canvas>
+        <!-- Elemento canvas onde o gráfico de barra será desenhado -->
         <canvas id="barra"></canvas>
 
     </div>
@@ -36,12 +41,12 @@
             plotarGraficoLinha(dados);
         });
 
-    // fetch("/dashboard/mediaAcertosErros")
-    //     .then(res => res.json())
-    //     .then(dados => {
-    //         console.log("Média:", dados);
-    //         plotarGraficoBarraMedia(dados);
-    //     });
+    fetch("/dashboard/mediaAcertosErros")
+        .then(res => res.json())
+        .then(dados => {
+            console.log("Média:", dados);
+            plotarGraficoBarraMedia(dados);
+        });
 
     fetch("/dashboard/desenhoAviador")
         .then(res => res.json())
@@ -51,24 +56,24 @@
         });
 }
 
-function plotarGraficoBarraMedia(dados) {
-    var votos = [];
-    var jogadores = [];
+function plotarGraficoLinha(dados) {
+    var personagens = [];
+    var usuarios = [];
 
     for (var i = 0; i < dados.length; i++) {
-        votos.push(dados[i].qtd);
-        jogadores.push("Quiz " + dados[i].fkQuiz);
+        personagens.push(dados[i].qtd);
+        usuarios.push("Quiz " + dados[i].fkQuiz);
     }
 
     var ctx = document.getElementById('barraMedia').getContext('2d');
 
     new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: jogadores,
+            labels: personagens,
             datasets: [{
-                label: 'Votos',
-                data: votos,
+                label: 'usuario',
+                data: usuarios,
                 backgroundColor: ['rgba(255, 99, 132, 0.2)'],
                 borderColor: ['rgba(255, 99, 132, 1)'],
                 borderWidth: 1
@@ -82,7 +87,7 @@ function plotarGraficoBarraAviador(dados) {
     var jogadores = [];
 
     for (var i = 0; i < dados.length; i++) {
-        votos.push(dados[i].qtd);
+        votos.push(dados[i].resultadoQuiz);
         jogadores.push("Quiz " + dados[i].fkQuiz);
     }
 

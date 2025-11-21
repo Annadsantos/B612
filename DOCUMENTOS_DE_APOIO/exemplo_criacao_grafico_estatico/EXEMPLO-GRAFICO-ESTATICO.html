@@ -122,7 +122,7 @@ function plotarGraficoBarra(dados){
   var ctx = document.getElementById('barra').getContext('2d');
   // Criando o gráfico de barra usando o Chart.js
   var myChart = new Chart(ctx, {
-      type: 'bar', // Tipo de gráfico: barra
+      type: 'pie', // Tipo de gráfico: barra
       data: { // Dados para o gráfico
           labels: jogadores, // Rótulos no eixo X
           datasets: [{
