@@ -34,7 +34,7 @@
             <div class="quiz-textos">
                 <h2>Qual conselho você precisa?</h2>
                 <p>Descubra qual personagem tem a mensagem ideal para você.</p>
-                <button id="btniniciar" onclick="if (verificarLoginAntes()) btniniciar()">iniciar</button>
+                <button id="btniniciar" onclick="(verificarLoginAntes()) && btniniciar()">iniciar</button>
             </div>
         </div>
 
@@ -447,8 +447,8 @@
             }
         }
 
-        function habilitarAlternativas(trueOrFalse) {
-            let opcaoEscolhida = trueOrFalse ? false : true;
+        function habilitarAlternativas(verdadeiroOuFalso) {
+            let opcaoEscolhida = verdadeiroOuFalso ? false : true;
 
             primeiraOpcao.disabled = opcaoEscolhida;
             segundaOpcao.disabled = opcaoEscolhida;

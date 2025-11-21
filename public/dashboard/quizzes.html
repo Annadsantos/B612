@@ -603,8 +603,7 @@
 
             var textoResultado = `Quiz memória: ${pontuacaoFinal} acertos (${percentual}%)`;
 
-            // TROCAR AQUI 👇
-            fetch("/quizzes/salvarResultado", {   // <-- plural, igual ao app.use("/quizzes", ...)
+            fetch("/quizzes/salvarResultado", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

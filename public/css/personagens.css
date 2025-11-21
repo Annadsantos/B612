@@ -88,8 +88,11 @@ body {
   margin: 40px auto;
   background: #b5d2ed;
   border-radius: 24px;
-  display: flex;
-  align-items: center;
+  transition: 0.1s;
+}
+
+.conteudo:hover {
+  transform: scale(1.05);
 }
 
 .conteudo img {
@@ -110,7 +113,7 @@ body {
 
 .personagens-texto h3 {
   margin: 0;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -119,5 +122,14 @@ body {
   font-size: 16px;
 }
 
+.personagens-texto p i{
+  margin: 0;
+  font-size: 16px;
+  transition: 0.2s;
+}
 
-/* VOTAÇÃO */
+.personagens-texto p i:hover{
+  color: #F8E37D;
+  transform: scale(1.05);
+}
+

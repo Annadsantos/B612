@@ -224,18 +224,3 @@ body {
     transform: scale(1.05);
     transition: 0.2s;
 }
-
-/* .alerta_erro {
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-}
-
-.card_erro {
-    display: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background-color: #ff6464;
-    color: #fff;
-    font-size: 13px;
-} */

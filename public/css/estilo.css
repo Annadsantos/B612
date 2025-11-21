@@ -91,7 +91,7 @@ body {
   background-size: cover;
   background-position: center;
   opacity: 0.9;
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   background-blend-mode: multiply;
 }
 
@@ -139,6 +139,7 @@ body {
   transform: scale(1.05);
   transition: 0.2s;
 }
+
 /* MISSÃO VISÃO VALORES */
 
 .social {
@@ -158,35 +159,34 @@ body {
 
 .texto-sinopse h1 {
   margin-bottom: 20px;
-  max-width: 700px; 
+  max-width: 700px;
   margin-top: 50px;
 }
 
 .texto-sinopse h1:hover {
   color: #F8E37D;
-  transform: scale(1.00);
+  transform: scale(1.01);
   transition: 0.2s;
 }
 
 .texto-sinopse p {
   margin-bottom: 60px;
-  max-width: 700px; 
+  max-width: 700px;
   margin-top: 50px;
 }
 
-.texto-sinopse p span{
+.texto-sinopse p span {
   color: #F8E37D;
-  display: inline-block;
   font-weight: bold;
+  display: inline-block;
 }
 
-.texto-sinopse p span:hover{
+.texto-sinopse p span:hover {
   transform: scale(1.05);
   transition: 0.2s;
 }
 
-
-.imagem-sinopse{
+.imagem-sinopse {
   background-image: url('../assets/imgs/index_parte2.png');
   background-size: cover;
   background-position: center;
