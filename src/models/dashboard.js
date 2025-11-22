@@ -12,18 +12,18 @@ function contarRespostasImagem() {
     return database.executar(instrucao);
 }
 
-function resultadoConselho() {
+function contarConselhosQuiz1() {
     var instrucao = `
         SELECT 
             p.resposta AS personagem,
-            COUNT(*) AS total
+            COUNT(*) AS qtd
         FROM resultadoQuiz rq
         JOIN personagem p 
             ON rq.fkPersonagem = p.idPersonagem
         WHERE rq.fkQuiz = 1
         GROUP BY p.resposta;
     `;
-    console.log("Executando sql resultadoConselho: \n" + instrucao);
+    console.log("Executando sql contarConselhosQuiz1: \n" + instrucao);
     return database.executar(instrucao);
 }
 
@@ -49,7 +49,7 @@ function media() {
 
 module.exports = {
     contarRespostasImagem,
-    resultadoConselho,
+    contarConselhosQuiz1,
     resumoQuiz2,
     media
 };

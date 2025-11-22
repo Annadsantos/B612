@@ -117,14 +117,13 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    // usando os MESMOS nomes que o backend envia:
                     sessionStorage.EMAIL_USUARIO = json.emailUsuario;
                     sessionStorage.NOME_USUARIO = json.nomeUsuario;
                     sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
                         window.location = "./dashboard/quizzes.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 1000);
                 });
 
             } else {

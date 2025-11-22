@@ -4,9 +4,13 @@ function salvarResultado(fkQuiz, fkUsuario, conselho, fkPersonagem) {
     console.log("ACESSEI O quizModel. Enviando dados para o banco.");
     console.log(" Quiz:", fkQuiz, "| Usuário:", fkUsuario, "| Conselho:", conselho, "| Personagem:", fkPersonagem);
 
-    var valorFkPersonagem = fkPersonagem == null || fkPersonagem == undefined
-        ? "NULL"
-        : Number(fkPersonagem);
+    var valorFkPersonagem;
+
+    if (fkPersonagem == null || fkPersonagem == undefined) {
+        valorFkPersonagem = "NULL";
+    } else {
+        valorFkPersonagem = Number(fkPersonagem);
+    }
 
     var instrucao = `
         INSERT INTO resultadoQuiz (fkQuiz, fkUsuario, fkPersonagem, conselho)
