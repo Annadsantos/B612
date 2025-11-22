@@ -4,142 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard B612</title>
+    <title>Exemplo de como Plotar Gráficos</title>
+    <!-- Incluindo a biblioteca Chart.js para desenhar gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="obterDados()">
+<body onload="obterDados()"> <!-- Chamando a função obterDados ao carregar a página -->
 
-    <h2>Essência infantil</h2>
-    <div id="kpiEssenciaInfantil"></div>
-    <canvas id="graficoQuiz2"></canvas>
-    <canvas id="graficoImagem"></canvas>
+    <!-- Título para o gráfico de linhas -->
+    Gráfico de linhas
+    <div>
+        <!-- Elemento canvas onde o gráfico de linha será desenhado -->
+        <canvas id="linha"></canvas>
+        <!-- Elemento canvas onde o gráfico de barra será desenhado -->
+        <canvas id="barra"></canvas>
+
+    </div>
+
+    <canvas id="barraMedia"></canvas>
+
+    <canvas id="barraAviador"></canvas>
 
     <span id="b_usuario"></span>
 
-    <script>
-        if (sessionStorage.NOME_USUARIO) {
-            document.getElementById("b_usuario").innerHTML = sessionStorage.NOME_USUARIO;
-        }
-    
-        function obterDados() {
-
-            fetch("/dashboard/respostasImagem")
-                .then(function (res) {
-                    if (!res.ok) {
-                        throw "Erro ao buscar respostasImagem. Status: " + res.status;
-                    }
-                    return res.json();
-                })
-                .then(function (dados) {
-                    console.log("Respostas imagem:", dados);
-                    plotarGraficoImagem(dados);
-                })
-                .catch(function (erro) {
-                    console.error(erro);
-                });
-    
-            fetch("/dashboard/quiz2Resumo")
-                .then(function (res) {
-                    if (!res.ok) {
-                        throw "Erro ao buscar quiz2Resumo: " + res.status;
-                    }
-                    return res.json();
-                })
-                .then(function (dados) {
-                    console.log("Dados quiz2Resumo (front):", dados);
-                    plotarGraficoQuiz2(dados);
-                })
-                .catch(function (erro) {
-                    console.error(erro);
-                });
-        }
-    
-        function plotarGraficoImagem(dados) {
-            var canvas = document.getElementById('graficoImagem');
-            if (!canvas) {
-                console.error("Canvas graficoImagem não encontrado");
-                return;
-            }
-    
-            var ctx = canvas.getContext('2d');
-    
-            var labels = [];
-            var valores = [];
-            var total = 0;
-            var qtdJiboia = 0;
-    
-            for (var i = 0; i < dados.length; i++) {
-                var linha = dados[i];
-                labels.push(linha.resposta);
-                valores.push(linha.qtd);
-                total += linha.qtd;
-    
-                if (linha.resposta && linha.resposta.toLowerCase() == "jiboia") {
-                    qtdJiboia = linha.qtd;
-                }
-            }
-    
-            var percentual = 0;
-            if (total > 0) {
-                percentual = ((qtdJiboia / total) * 100).toFixed(1);
-            }
-    
-            var kpi = document.getElementById("kpiEssenciaInfantil");
-            if (kpi) {
-                kpi.innerHTML = percentual + "% veem uma jiboia (essência infantil)";
-            }
-    
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Respostas da imagem',
-                        data: valores
-                    }]
-                }
-            });
-        }
-    
-        function plotarGraficoQuiz2(dados) {
-            console.log("Chegou no plotarGraficoQuiz2:", dados);
-    
-            var acima = Number(dados.acima50 || 0);
-            var abaixo = Number(dados.abaixo50 || 0);
-    
-            console.log("Valores usados no gráfico – acima:", acima, "abaixo:", abaixo);
-    
-            var canvas = document.getElementById('graficoQuiz2');
-    
-            if (!canvas) {
-                canvas = document.createElement("canvas");
-                canvas.id = "graficoQuiz2";
-                document.body.appendChild(canvas);
-            }
-    
-            var ctx = canvas.getContext('2d');
-    
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Acima de 50%', 'Abaixo de 50%'],
-                    datasets: [{
-                        label: 'Quantidade de usuários',
-                        data: [acima, abaixo],
-                        backgroundColor: ['#4CAF50', '#F44336']
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            precision: 0
-                        }
-                    }
-                }
-            });
-        }
-    </script>    
 </body>
+
 </html>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function obterDados() {
+    fetch("/dashboard/resultadoPersonagem")
+        .then(res => res.json())
+        .then(dados => {
+            console.log("Dados linha:", dados);
+            plotarGraficoLinha(dados);
+        });
+
+    fetch("/dashboard/mediaAcertosErros")
+        .then(res => res.json())
+        .then(dados => {
+            console.log("Média:", dados);
+            plotarGraficoBarraMedia(dados);
+        });
+
+    fetch("/dashboard/desenhoAviador")
+        .then(res => res.json())
+        .then(dados => {
+            console.log("Desenho:", dados);
+            plotarGraficoBarraAviador(dados);
+        });
+}
+
+function plotarGraficoBarraMedia(dados) {
+    var votos = [];
+    var jogadores = [];
+
+    for (var i = 0; i < dados.length; i++) {
+        votos.push(dados[i].qtd);      // ajusta conforme o SELECT
+        jogadores.push("Quiz " + dados[i].fkQuiz);
+    }
+
+    var ctx = document.getElementById('barraMedia').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: jogadores,
+            datasets: [{
+                label: 'Votos',
+                data: votos,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        }
+    });
+}
+
+function plotarGraficoBarraAviador(dados) {
+    var votos = [];
+    var jogadores = [];
+
+    for (var i = 0; i < dados.length; i++) {
+        votos.push(dados[i].qtd);      // exemplo
+        jogadores.push("Quiz " + dados[i].fkQuiz);
+    }
+
+    var ctx = document.getElementById('barraAviador').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: jogadores,
+            datasets: [{
+                label: 'Votos',
+                data: votos,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        }
+    });
+}
+
+</script>
