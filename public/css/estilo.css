@@ -82,8 +82,6 @@ body {
   margin: 0;
 }
 
-/* BANNER */
-
 .banner {
   height: var(--tamanho-banner);
   color: white;
@@ -140,8 +138,6 @@ body {
   transition: 0.2s;
 }
 
-/* MISSÃO VISÃO VALORES */
-
 .social {
   background-color: #f4f0f0;
   height: 900px;
@@ -195,8 +191,6 @@ body {
   height: 300px;
   border-radius: 24px 0 24px 0;
 }
-
-/* FOOTER */
 
 .footer {
   background-color: #A5C7E5;

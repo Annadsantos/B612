@@ -26,13 +26,13 @@ function autenticar(req, res) {
                             emailUsuario: resultadoAutenticar[0].emailUsuario,
                             senhaUsuario: resultadoAutenticar[0].senhaUsuario
                         });
-                        
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!")
                     }
-                       
+
                 }
             ).catch(
                 function (erro) {
@@ -57,10 +57,10 @@ function cadastrar(req, res) {
     } else if (email == undefined) {
         res.status(400).send("Seu email está indefinido!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!"); 
-    }else if (confirmacaoSenha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else if (confirmacaoSenha == undefined) {
         res.status(400).send("Sua confirmação de senha está indefinida!");
-    }else if (resposta == undefined) {
+    } else if (resposta == undefined) {
         res.status(400).send("Sua escolha está indefinida!");
     } else {
 
