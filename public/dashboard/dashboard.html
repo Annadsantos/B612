@@ -7,30 +7,44 @@
     <title>Dashboard B612</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/dashboards.css">
-
-
-    <style>
-        #graficoQuiz2,
-        #graficoImagem,
-        #graficoConselhos {
-            max-width: 300px;
-            max-height: 300px;
-        }
-    </style>
-
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body onload="obterDados()">
-    <div id="kpiEssenciaInfantil"></div>
-    <div id="kpiQuizResumo"></div>
-    <div id="kpiMaisConselho"></div>
+    <div class="janela">
+        <div class="header-left">
+            <h1>B612</h1>
 
-    <canvas id="graficoQuiz2"></canvas>
-    <canvas id="graficoImagem"></canvas>
-    <canvas id="graficoConselhos"></canvas>
+            <div class="hello">
+                <h3>Bem-vindo, <span id="b_usuario"></span> ao Asteróide B612!</h3>
+            </div>
 
-    <span id="b_usuario"></span>
+            <div class="btn-nav-white"><a href="quizzes.html">
+                    <h3>quizzes</h3>
+                </a></div>
+            <div class="btn-nav-white"><a href="dashboard.html">
+                    <h3>dashboard</h3>
+                </a></div>
 
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>sair</h3>
+            </div>
+        </div>
+
+        <div class="conteudo">
+            <div class="kpis-container">
+                <div id="kpiEssenciaInfantil" class="kpi"></div>
+                <div id="kpiQuizResumo" class="kpi"></div>
+                <div id="kpiMaisConselho" class="kpi"></div>
+            </div>
+
+            <div class="graficos-container">
+                <canvas id="graficoQuiz2"></canvas>
+                <canvas id="graficoImagem"></canvas>
+                <canvas id="graficoConselhos"></canvas>
+            </div>
+        </div>
+    </div>
     <script>
         if (sessionStorage.NOME_USUARIO) {
             document.getElementById("b_usuario").innerHTML = sessionStorage.NOME_USUARIO;
@@ -112,7 +126,7 @@
 
             var kpi1 = document.getElementById("kpiEssenciaInfantil");
             if (kpi1) {
-                kpi1.innerHTML = `essência infantil - ${percentual}%`;
+                kpi1.innerHTML = `essência infantil ${percentual}%`;
             }
 
             new Chart(ctx, {
@@ -121,7 +135,8 @@
                     labels: labels,
                     datasets: [{
                         label: 'Respostas da imagem',
-                        data: valores
+                        data: valores,
+                        backgroundColor: ['#FFC8A2', '#C3C7D7']
                     }]
                 }
             });
@@ -144,7 +159,7 @@
 
             var kpi2 = document.getElementById("kpiQuizResumo");
             if (kpi2) {
-                kpi2.innerHTML = `percentual de acertos acima da metade - ${percentualAcima}%`;
+                kpi2.innerHTML = `percentual de acertos acima da metade ${percentualAcima}%`;
             }
 
             var canvas = document.getElementById('graficoQuiz2');
@@ -156,12 +171,19 @@
                 data: {
                     labels: ['Acima de 50%', 'Abaixo de 50%'],
                     datasets: [{
-                        label: 'Quantidade de usuários',
+                        label: 'Quantidade de envios',
                         data: [acima, abaixo],
-                        backgroundColor: ['#4CAF50', '#F44336']
+                        backgroundColor: ['#C7DB9B', '#FF746C']
                     }]
                 },
                 options: {
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Percentual do Quiz'
+                        }
+                    },
                     scales: {
                         y: {
                             beginAtZero: true,
@@ -171,6 +193,8 @@
                 }
             });
         }
+
+
 
         function plotarGraficoConselhos(dados) {
 
@@ -205,16 +229,24 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Quantidade de usuários',
+                        label: 'Quantidade de conselhos',
                         data: valores,
-                        backgroundColor: ['#FF9800', '#E91E63', '#3F51B5']
+                        backgroundColor: ['#B2E2F2', '#FABFB7', '#F6C68A']
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Personagem mais conselheiro'
+                        }
+                    },
                     scales: {
-                        y: { beginAtZero: true }
+                        y: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
                     }
                 }
             });

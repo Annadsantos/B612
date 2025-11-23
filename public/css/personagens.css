@@ -38,7 +38,6 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
-  font-weight: 450;
 }
 
 .navbar {
@@ -79,6 +78,10 @@ body {
 
 .header h1 {
   margin: 0;
+}
+
+.hello h3 span {
+  color: #F8E37D;
 }
 
 .conteudo {
