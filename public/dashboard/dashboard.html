@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard B612</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/dashboards.css">
+
 
     <style>
         #graficoQuiz2,
@@ -19,9 +21,10 @@
 </head>
 
 <body onload="obterDados()">
-
-    <h2>Essência infantil</h2>
     <div id="kpiEssenciaInfantil"></div>
+    <div id="kpiQuizResumo"></div>
+    <div id="kpiMaisConselho"></div>
+
     <canvas id="graficoQuiz2"></canvas>
     <canvas id="graficoImagem"></canvas>
     <canvas id="graficoConselhos"></canvas>
@@ -37,7 +40,7 @@
             fetch("/dashboard/respostasImagem")
                 .then(function (res) {
                     if (!res.ok) {
-                        console.log ("Erro ao buscar respostasImagem. Status: " + res.status);
+                        console.log("Erro ao buscar respostasImagem. Status: " + res.status);
                     }
                     return res.json();
                 })
@@ -67,7 +70,7 @@
             fetch("/dashboard/conselhosQuiz1")
                 .then(function (res) {
                     if (!res.ok) {
-                        console.log ("Erro ao buscar conselhosQuiz1: " + res.status);
+                        console.log("Erro ao buscar conselhosQuiz1: " + res.status);
                     }
                     return res.json();
                 })
@@ -107,9 +110,9 @@
                 percentual = ((qtdJiboia / total) * 100).toFixed(1);
             }
 
-            var kpi = document.getElementById("kpiEssenciaInfantil");
-            if (kpi) {
-                kpi.innerHTML = percentual + "% veem uma jiboia (essência infantil)";
+            var kpi1 = document.getElementById("kpiEssenciaInfantil");
+            if (kpi1) {
+                kpi1.innerHTML = `essência infantil - ${percentual}%`;
             }
 
             new Chart(ctx, {
@@ -132,9 +135,21 @@
 
             console.log("Valores usados no gráfico – acima:", acima, "abaixo:", abaixo);
 
+            var total = acima + abaixo;
+            var percentualAcima = 0;
+
+            if (total > 0) {
+                percentualAcima = ((acima / total) * 100).toFixed(1);
+            }
+
+            var kpi2 = document.getElementById("kpiQuizResumo");
+            if (kpi2) {
+                kpi2.innerHTML = `percentual de acertos acima da metade - ${percentualAcima}%`;
+            }
+
             var canvas = document.getElementById('graficoQuiz2');
 
-            var ctx = canvas.getContext('2d');
+            var ctx = canvas.getContext('2d')
 
             new Chart(ctx, {
                 type: 'bar',
@@ -162,9 +177,25 @@
             var labels = [];
             var valores = [];
 
+            var personagemMaisVotado = null;
+            var maiorQtd = -1;
+
             for (var i = 0; i < dados.length; i++) {
-                labels.push(dados[i].personagem);
-                valores.push(dados[i].qtd);
+                var personagem = dados[i].personagem;
+                var qtd = dados[i].qtd;
+
+                labels.push(personagem);
+                valores.push(qtd);
+
+                if (qtd > maiorQtd) {
+                    maiorQtd = qtd;
+                    personagemMaisVotado = personagem;
+                }
+            }
+
+            var kpi3 = document.getElementById("kpiMaisConselho");
+            if (kpi3) {
+                kpi3.innerHTML = `personagem mais escolhido nos conselhos: ${personagemMaisVotado}`;
             }
 
             var ctx = document.getElementById('graficoConselhos').getContext('2d');
