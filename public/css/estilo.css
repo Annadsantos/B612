@@ -20,6 +20,16 @@ body {
   margin: auto;
 }
 
+.container-chamativo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+  background-color: #F5F5F5;
+  padding: 60px 0 80px;
+  margin-top: 5%;
+}
+
 .header {
   height: var(--tamanho-header);
   background-color: #A5C7E5;
@@ -124,6 +134,24 @@ body {
   transition: 0.2s;
 }
 
+.botao2 {
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 24px;
+  background-color: #A5C7E5;
+  height: 28px;
+  text-decoration: none;
+  color: #ffff;
+}
+
+.botao2:hover {
+  color: #F8E37D;
+  transition: 0.2s;
+}
+
 .banner .container p {
   font-size: 25px;
 }
@@ -153,16 +181,72 @@ body {
   align-items: flex-start;
 }
 
+.baobas {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.chamativo {
+  display: flex;
+  gap: 40px;
+  text-align: center;
+  align-items: center;
+}
+
+.chamativo h1 {
+  margin-top: 70px;
+}
+
+.sobre {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
 .texto-sinopse h1 {
   margin-bottom: 20px;
   max-width: 700px;
   margin-top: 50px;
 }
 
+.texto-baobas h1 {
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+.texto-sobre h1 {
+  max-width: 700px;
+  margin-top: 50px;
+}
+
 .texto-sinopse h1:hover {
   color: #F8E37D;
-  transform: scale(1.01);
   transition: 0.2s;
+}
+
+.texto-baobas h1:hover {
+  color: #F8E37D;
+  transition: 0.2s;
+}
+
+.texto-chamativo h1:hover {
+  color: #F8E37D;
+  transition: 0.2s;
+}
+
+.texto-sobre h1:hover {
+  color: #F8E37D;
+  transition: 0.2s;
+}
+
+.texto-sobre h3 span{
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.texto-sobre h3 span:hover {
+  color: #F8E37D;
 }
 
 .texto-sinopse p {
@@ -171,7 +255,43 @@ body {
   margin-top: 50px;
 }
 
+.texto-baobas p {
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-top: 50px;
+}
+
+.texto-sobre p {
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-top: 50px;
+}
+
+.texto-chamativo p {
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-top: 50px;
+}
+
+.texto-chamativo p span{
+  color: #F8E37D;
+  font-weight: bold;
+  display: inline-block;
+}
+
 .texto-sinopse p span {
+  color: #F8E37D;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.texto-baobas p span {
+  color: #F8E37D;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.texto-sobre p span{
   color: #F8E37D;
   font-weight: bold;
   display: inline-block;
@@ -182,11 +302,46 @@ body {
   transition: 0.2s;
 }
 
+.texto-baobas p span:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.texto-chamativo p span:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.texto-sobre p span:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
 .imagem-sinopse {
   background-image: url('../assets/imgs/index_parte2.png');
   background-size: cover;
   background-position: center;
   margin-top: 170px;
+  width: 510px;
+  height: 300px;
+  border-radius: 24px 0 24px 0;
+}
+
+.imagem-baobas {
+  background-image: url('../assets/imgs/baobas.jpeg');
+  background-size: cover;
+  background-position: center;
+  margin-top: 100px;
+  width: 510px;
+  height: 300px;
+  border-radius: 24px 0 24px 0;
+}
+
+.imagem-sobre {
+  background-image: url('../assets/imgs/sobre.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-top: 210px;
   width: 510px;
   height: 300px;
   border-radius: 24px 0 24px 0;
