@@ -22,7 +22,6 @@ function salvarResultado(req, res) {
             });
     }
 }
-
 module.exports = {
     salvarResultado
 };

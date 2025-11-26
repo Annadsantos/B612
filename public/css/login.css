@@ -23,7 +23,7 @@ body {
 .body-container {
   display: flex;
   height: calc(100vh - var(--tamanho-header));
-  
+
 }
 
 .left,

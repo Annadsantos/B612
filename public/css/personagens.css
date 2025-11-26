@@ -131,14 +131,13 @@ body {
   font-size: 16px;
 }
 
-.personagens-texto p i{
+.personagens-texto p i {
   margin: 0;
   font-size: 16px;
   transition: 0.2s;
 }
 
-.personagens-texto p i:hover{
+.personagens-texto p i:hover {
   color: #F8E37D;
   transform: scale(1.05);
 }
-

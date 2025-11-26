@@ -60,7 +60,7 @@ body {
   padding: 2% 5%;
 }
 
-.btn-nav-white :hover{
+.btn-nav-white :hover {
   color: #F8E37D;
 }
 
@@ -80,7 +80,7 @@ body {
 }
 
 .btn-nav h3,
-.btn-logout  {
+.btn-logout {
   margin: 0;
   padding: 0;
   height: 10px;
@@ -135,8 +135,8 @@ body {
 #graficoQuiz2,
 #graficoImagem,
 #graficoConselhos {
-    max-width: 300px;
-    max-height: 300px;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 .graficos-container {
@@ -154,5 +154,5 @@ body {
   background-color: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }

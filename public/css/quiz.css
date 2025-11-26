@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  margin-left: 25%; 
+  margin-left: 25%;
 }
 
 :root {
@@ -50,7 +50,7 @@ body {
   padding: 0;
 }
 
-.navbar a span{
+.navbar a span {
   background-color: #ffff;
   width: 100px;
   color: #A5C7E5;
@@ -58,7 +58,7 @@ body {
   transition: 0.2s;
 }
 
-.navbar a span:hover{
+.navbar a span:hover {
   color: #F8E37D;
   transform: scale(1.05);
 }
@@ -69,7 +69,7 @@ body {
 }
 
 .navbar li a:hover {
-  color: #F8E37D; 
+  color: #F8E37D;
   transform: scale(1.05);
 }
 
@@ -135,11 +135,10 @@ body {
 }
 
 .quiz-textos button:hover {
-  color: #F8E37D; 
+  color: #F8E37D;
   transform: scale(1.05);
   transition: 0.2s;
 }
-
 
 #pontuacaoConselhoEJogo {
   max-width: 700px;
@@ -198,7 +197,7 @@ body {
 }
 
 #botoesConselho button:hover {
-  color: #F8E37D; 
+  color: #F8E37D;
   transform: scale(1.05);
   transition: 0.2s;
 }
@@ -212,7 +211,6 @@ body {
   border-radius: 14px;
   text-align: left;
 }
-
 
 #pontuacaoEJogo {
   max-width: 900px;
@@ -266,7 +264,7 @@ body {
 
 #botoes button {
   padding: 8px 16px;
-  border-radius: 10px;    
+  border-radius: 10px;
   background: #A5C7E5;
   border: none;
   color: white;
@@ -275,7 +273,7 @@ body {
 }
 
 #botoes button:hover {
-  color: #F8E37D; 
+  color: #F8E37D;
   transform: scale(1.05);
   transition: 0.2s;
 }

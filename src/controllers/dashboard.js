@@ -12,7 +12,6 @@ function respostasImagem(req, res) {
         });
 }
 
-var dashboardModels = require("../models/dashboard");
 function respostasImagem(req, res) {
     console.log("Entrando em respostasImagem");
     dashboardModels.contarRespostasImagem()

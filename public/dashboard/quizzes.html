@@ -510,22 +510,22 @@
             let alternativaCorreta = null;
 
             options.forEach((option) => {
-                if (option.value === respostaQuestaoAtual) {
+                if (option.value == respostaQuestaoAtual) {
                     alternativaCorreta = option.labels[0].id;
                 }
             });
 
             options.forEach((option) => {
-                if (option.checked === true && option.value === respostaQuestaoAtual) {
+                if (option.checked == true && option.value == respostaQuestaoAtual) {
                     document.getElementById(alternativaCorreta).classList.add("text-success-with-bg");
                     pontuacaoFinal++;
                     certas++;
                     document.getElementById("spanCertas").innerHTML = certas;
 
-                } else if (option.checked && option.value !== respostaQuestaoAtual) {
-                    const wrongLabelId = option.labels[0].id;
+                } else if (option.checked && option.value != respostaQuestaoAtual) {
+                    const labelId = option.labels[0].id;
 
-                    document.getElementById(wrongLabelId).classList.add("text-danger-with-bg");
+                    document.getElementById(labelId).classList.add("text-danger-with-bg");
                     document.getElementById(alternativaCorreta).classList.add("text-success-with-bg");
                     tentativaIncorreta++;
                     erradas++;
